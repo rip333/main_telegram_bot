@@ -7,4 +7,5 @@ public interface IMessageService
     Task SendStickerToChat(long chatId, string webpUrl, string message);
     Task SendChatAction(long chatId, string action = "upload_photo");
     Task SendMessageToChat(long chatId, string message, string parseMode = "");
+    Task SendAudio(long chatId, string audioPath);
 }

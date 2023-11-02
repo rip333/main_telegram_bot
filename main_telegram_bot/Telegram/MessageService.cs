@@ -89,5 +89,16 @@ namespace Telegram
             };
             await _httpClient.PostAsync(requestUrl, formContent);
         }
+
+        public async Task SendAudio(long chatId, string audioPath)
+        {
+            var requestUrl = $"{Constants.API_URL}{_token}/sendAudio";
+            var formContent = new MultipartFormDataContent
+            {
+                { new StringContent(chatId.ToString()), "chat_id" },
+                { new StringContent(audioPath), "audio"}
+            };
+            await _httpClient.PostAsync(requestUrl, formContent);
+        }
     }
 }

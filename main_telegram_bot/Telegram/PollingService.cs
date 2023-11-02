@@ -1,4 +1,6 @@
 
+using System.Diagnostics;
+
 namespace Telegram;
 public class PollingService
 {
@@ -36,11 +38,11 @@ public class PollingService
         Console.WriteLine($"Received message: {text}");
         if (string.IsNullOrEmpty(text)) return;
 
-        await _messageService.SendMessageToChat(result.message.chat.id, $"MESSAGE RECEIVED: {text}");
-    }
 
-    private async Task SendStickerIfAvailable(long chatId, string webpUrl, string caption)
-    {
-        await _messageService.SendStickerToChat(chatId, webpUrl, caption);
+        if (text.Contains("fart"))
+        {
+            Console.WriteLine($"GENERATING FART NOISE");
+            await _messageService.SendAudio(result.message.chat.id, "https://www.myinstants.com/media/sounds/fart-with-reverb.mp3");
+        }
     }
 }
