@@ -39,7 +39,7 @@ public class PollingService
         if (string.IsNullOrEmpty(text)) return;
 
 
-        if (text.Contains("fart"))
+        if (text.ToLower().Contains("fart"))
         {
             Console.WriteLine($"GENERATING FART NOISE");
             await _messageService.SendAudio(result.message.chat.id, Constants.FART_WITH_REVERB);
